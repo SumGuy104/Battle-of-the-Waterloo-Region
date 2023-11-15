@@ -85,11 +85,12 @@ label start:
     $evilAndrew = fighter('Andrew','a', 100)
     #$player = fighter('Ben','b', 100)
 
-    
-    $combatCycle(foe2)
+    python:
+        #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
+        playerWon = False
+        while not playerWon:
+            playerWon = combatCycle(foe2)
 
-    
-    
     n "Combat over"
 
 
