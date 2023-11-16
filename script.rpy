@@ -87,9 +87,14 @@ label start:
 
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
-        playerWon = False
-        while not playerWon:
-            playerWon = combatCycle(foe2)
+        
+        
+        outcome = combatCycle(foe2)
+        if outcome:
+            m("I won")
+        else:
+            cmg("QUACK")
+
 
     n "Combat over"
 

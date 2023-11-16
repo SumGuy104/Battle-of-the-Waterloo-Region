@@ -104,7 +104,7 @@ python early:
         foe.heal()
         player.heal()
         playerAlive = True
-        while playerAlive and foeAlive:
+        while True:
             n("Choose an attack:")
             choice = renpy.display_menu([ (player.atkList(1)[0],1),(player.atkList(2)[0],2),(player.atkList(3)[0],3) ])
             n((player.name+ " uses " + player.atkList(choice)[0]))
@@ -142,4 +142,4 @@ python early:
     $player.takeDmg(cmgAttack(1))
     $n((player.name+" is at "+str(player.health)+" health"))
     '''
-        
+       
