@@ -100,29 +100,29 @@ python early:
             return 222
 
     def combatCycle(foe):
-        n((player.name + " Verses the " + foe.name))
+        n((player.name + " verses the " + foe.name + "."))
         foe.heal()
         player.heal()
         playerAlive = True
         while True:
             n("Choose an attack:")
             choice = renpy.display_menu([ (player.atkList(1)[0],1),(player.atkList(2)[0],2),(player.atkList(3)[0],3) ])
-            n((player.name+ " uses " + player.atkList(choice)[0]))
-            n((player.name+" deals "+str(player.atkList(choice)[1])+" damage" ))
+            n((player.name+ " uses " + player.atkList(choice)[0] + "."))
+            n((player.name+" deals "+str(player.atkList(choice)[1])+" damage." ))
             foe.takeDmg(player.atkList(choice)[1])
             if foe.health <= 0:
                 break
-            n((foe.name+" is at "+str(foe.health)+" health"))
+            n((foe.name+" is at "+str(foe.health)+" health."))
              
             rand = random.randint(1,3)
-            n((foe.name+" uses "+fighter.atkList(foe,rand)[0]))
-            n((foe.name+" deals "+str(fighter.atkList(foe,rand)[1])+" damage"))
+            n((foe.name+" uses "+fighter.atkList(foe,rand)[0]+ "."))
+            n((foe.name+" deals "+str(fighter.atkList(foe,rand)[1])+" damage."))
             player.takeDmg(fighter.atkList(foe,rand)[1])
             if player.health <= 0:
                 playerAlive = False
                 break
                 
-            n((player.name+" is at "+str(player.health)+" health"))
+            n((player.name+" is at "+str(player.health)+" health."))
         
         return playerAlive
         
@@ -142,4 +142,4 @@ python early:
     $player.takeDmg(cmgAttack(1))
     $n((player.name+" is at "+str(player.health)+" health"))
     '''
-       
+            
