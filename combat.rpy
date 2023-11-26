@@ -41,7 +41,7 @@ python early:
                     chance = random.randint(1,1000)
                     dmg = 0
                     if chance <= 272:   
-                        dmg = foe.health
+                        dmg = 6022
                     return ["Euler's Punch",dmg,1]
                     
                 elif atkNum == 2:
@@ -57,8 +57,8 @@ python early:
 
                     return ["Blue Cheese",45,1]
                 elif atkNum == 2:
-                        hitnumb = random.randint(1,2)
-                        dmg = random.randint(20,30)
+                    hitnumb = random.randint(1,2)
+                    dmg = random.randint(20,30)
                     return ["Gouda Gun",dmg,hitnumb]
                 else:
                     dmg = random.randint(1,80)
@@ -125,9 +125,11 @@ python early:
             choice = renpy.display_menu([ (player.atkList(1)[0],1),(player.atkList(2)[0],2),(player.atkList(3)[0],3) ])
             n((player.name+ " uses " + player.atkList(choice)[0] + "."))
 
-            for i in range((player.atkList(choice)[2])):
-                n((player.name+" deals "+str(player.atkList(choice)[1])+" damage." ))
-                foe.takeDmg(player.atkList(choice)[1])
+            damage = player.atkList(choice)[1]
+            loop = player.atkList(choice)[2]
+            for i in range(loop):
+                n((player.name+" deals "+str(damage)+" damage" + (" again"*i) + "." ))
+                foe.takeDmg(damage)
 
             reco = random.randint(1,4)
             player.atkList(choice, reco)
@@ -137,9 +139,10 @@ python early:
             n((foe.name+" is at "+str(foe.health)+" health."))
              
             rand = random.randint(1,3)
+            damage = fighter.atkList(foe,rand)[1]
             n((foe.name+" uses "+fighter.atkList(foe,rand)[0]+ "."))
-            n((foe.name+" deals "+str(fighter.atkList(foe,rand)[1])+" damage."))
-            player.takeDmg(fighter.atkList(foe,rand)[1])
+            n((foe.name+" deals "+str(damage)+" damage."))
+            player.takeDmg(damage)
             if player.health <= 0:
                 playerAlive = False
                 break
@@ -164,4 +167,6 @@ python early:
     $player.takeDmg(cmgAttack(1))
     $n((player.name+" is at "+str(player.health)+" health"))
     '''
+
+    
             
