@@ -23,37 +23,53 @@ python early:
         Andrew, you can add more code, like randomizers, under the if/elif for each attack. Save the damage in a variable, 
         and return that variable in the second element in the list (just like ive done with the dmg variable on the first 2 attacks)
         '''
-        def atkList(self,atkNum):
+        
+
+        def atkList(self,atkNum, recoil=0):
             if self.nickname == 'w':
                 if atkNum == 1:
-                    dmg = 12
-                    return ["Killer Groove",dmg]
+                    dmg = random.randint(15,50)
+                    return ["Killer Groove",dmg,1]
                 elif atkNum == 2:
-                    dmg = 32
-                    return ["Drum Beating",dmg]
+                    hitnumber = random.randint(1,5)
+                    dmg = random.randint(10,15)
+                    return ["Drum Beating",dmg,hitnumber]
                 else:
-                    return ["AbMaj7(b9,#13)",50]
+                    return ["AbMaj7(b9,#13)",32,1]
             elif self.nickname == 'a':
                 if atkNum == 1:
-                    return ["Punch",8]
+                    chance = random.randint(1,1000)
+                    dmg = 0
+                    if chance <= 272:   
+                        dmg = foe.health
+                    return ["Euler's Punch",dmg,1]
+                    
                 elif atkNum == 2:
-                    return ["PV=NRT",45]
+                    return ["PV=NRT",35,1]
                 else:
-                    return ["Span(B)",60]
+                    dmg = random.randint(25,46)
+                    return ["Span(B)",dmg,1]
             elif self.nickname == 'b':
                 if atkNum == 1:
-                    return ["Sharp Cheddar",30]
+                    if recoil == 3:
+                        n("The blue cheese was actually just moldy cheddar")
+                        n("Ben takes 25 damage")
+
+                    return ["Blue Cheese",45,1]
                 elif atkNum == 2:
-                    return ["Gouda Gun",20]
+                        hitnumb = random.randint(1,2)
+                        dmg = random.randint(20,30)
+                    return ["Gouda Gun",dmg,hitnumb]
                 else:
-                    return ["Brie Bomb",50]
+                    dmg = random.randint(1,80)
+                    return ["Brie Bomb",dmg,1]
             elif self.nickname == 'cmg':
                 if atkNum == 1:
-                    return ["Sonic Honk",2]
+                    return ["Sonic Honk",2,1]
                 elif atkNum == 2:
-                    return ["Acid Breath",22]
+                    return ["Acid Breath",22,1]
                 else:
-                    return ["Triple Kick",222]
+                    return ["Triple Kick",222,1]
         
         #This is an old system of dealing with attacks and damage. Its simpler but much longer (and you know Im down-bad for efficiency)
         def atk(self,atkNum):
@@ -108,8 +124,14 @@ python early:
             n("Choose an attack:")
             choice = renpy.display_menu([ (player.atkList(1)[0],1),(player.atkList(2)[0],2),(player.atkList(3)[0],3) ])
             n((player.name+ " uses " + player.atkList(choice)[0] + "."))
-            n((player.name+" deals "+str(player.atkList(choice)[1])+" damage." ))
-            foe.takeDmg(player.atkList(choice)[1])
+
+            for i in range((player.atkList(choice)[2])):
+                n((player.name+" deals "+str(player.atkList(choice)[1])+" damage." ))
+                foe.takeDmg(player.atkList(choice)[1])
+
+            reco = random.randint(1,4)
+            player.atkList(choice, reco)
+            
             if foe.health <= 0:
                 break
             n((foe.name+" is at "+str(foe.health)+" health."))
