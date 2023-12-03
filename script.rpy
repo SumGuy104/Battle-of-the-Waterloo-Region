@@ -233,9 +233,11 @@ label start:
         outcome = False
         while outcome != True:
             outcome = combatCycle(foe2)
-            #BC if the player loses the battle, this dialogue will be used
-            m("A normal goose is bad enough, but one with three legs…come on…")
-            m("Let's try this again...")
+            if not outcome:
+                #BC if the player loses the battle, this dialogue will be used
+                m("A normal goose is bad enough, but one with three legs…come on…")
+                m("Let's try this again...")
+                
         #BC if the player wins the battle, this dialogue will be used
         m("No one attacks a UW student unwarranted even if it is a three-legged goose! BUT WHY DOES IT HAVE THREE LEGS?")
 
@@ -289,10 +291,12 @@ label start:
         outcome = False
         while outcome != True:
             outcome = combatCycle(foe3)
-            #BC if the player loses the battle, this dialogue will be used
-            cmg("HONK!")
-            m("I should have brought neutralizer. And maybe some PPE…")
-            m("Let's try this again...")
+            if not outcome:
+                #BC if the player loses the battle, this dialogue will be used
+                cmg("HONK!")
+                m("I should have brought neutralizer. And maybe some PPE…")
+                m("Let's try this again...")
+
         #BC if the player wins the battle, this dialogue will be used
         m("Good thing this chemically modified goose didn’t bring any extremely toxic chemicals to this battle…")
             
@@ -366,8 +370,10 @@ label start:
         while outcome != True:
             outcome = combatCycle(boss)
             #BC if the player loses the battle, this dialogue will be used
-            e("You really thought some random first-year chemical engineering student could beat me? HA HA HA.")
-            m("Let's try this again...")
+            if not outcome:
+                e("You really thought some random first-year chemical engineering student could beat me? HA HA HA.")
+                m("Let's try this again...")
+
         #BC if the player wins the battle, this dialogue will be used
         m("Your reign of chemical terror is over.")
         m("The geese will no longer be chemically modified, and UW students will no longer be terrorized by those chemically modified geese.")
