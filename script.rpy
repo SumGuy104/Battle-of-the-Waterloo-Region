@@ -327,9 +327,9 @@ label start:
 
     #BC depending on which character the player is, one of the other characters will appear
     if m == a:
-        show andrew pose #BC if Andrew was chosen, Ben will appear as the final boss
+        show ben pose #BC if Andrew was chosen, Ben will appear as the final boss
     elif m == b:
-        show andrew pose #BC if Ben was chosen, Will will appear as the final boss
+        show will pose #BC if Ben was chosen, Will will appear as the final boss
     else:
         show andrew pose #BC if Will was chosen, Andrew will appear as the final boss
 
@@ -381,9 +381,9 @@ label start:
     #BC since the battle is over, the image of one of us can disappear
     #BC depending on which character the player is, one of the other characters will disappear
     if m == a:
-        hide andrew pose #BC if Andrew was chosen, Ben will disappear 
+        hide ben pose #BC if Andrew was chosen, Ben will disappear 
     elif m == b:
-        hide andrew pose #BC if Ben was chosen, Will will disappear 
+        hide will pose #BC if Ben was chosen, Will will disappear 
     else:
         hide andrew pose #BC if Will was chosen, Andrew will disappear 
 
