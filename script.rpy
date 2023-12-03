@@ -155,13 +155,17 @@ label start:
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
-        outcome = combatCycle(foe1)
-        if outcome:
-            #BC if the player wins the battle, this dialogue will be used
-            m("The first battle victory of many more to come! Even if it was just against a one-legged goose…")
-        else:
+        outcome = False
+        while outcome != True:
+            outcome = combatCycle(foe1)
             #BC if the player loses the battle, this dialogue will be used
             m("Well, it could be worse. I could have lost against a zero-legged goose…")
+            m("Let's try this again...")
+        
+        #BC if the player wins the battle, this dialogue will be used
+        m("The first battle victory of many more to come! Even if it was just against a one-legged goose…")
+            
+
 
     n"Combat over." #BC let's the player know that the battle sequence has concluded 
 
@@ -226,13 +230,14 @@ label start:
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
-        outcome = combatCycle(foe2)
-        if outcome:
-            #BC if the player wins the battle, this dialogue will be used
-            m("No one attacks a UW student unwarranted even if it is a three-legged goose! BUT WHY DOES IT HAVE THREE LEGS?")
-        else:
+        outcome = False
+        while outcome != True:
+            outcome = combatCycle(foe2)
             #BC if the player loses the battle, this dialogue will be used
             m("A normal goose is bad enough, but one with three legs…come on…")
+            m("Let's try this again...")
+        #BC if the player wins the battle, this dialogue will be used
+        m("No one attacks a UW student unwarranted even if it is a three-legged goose! BUT WHY DOES IT HAVE THREE LEGS?")
 
     n"Combat over." #BC let's the player know that the battle sequence has concluded 
 
@@ -281,14 +286,16 @@ label start:
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
-        outcome = combatCycle(foe3)
-        if outcome:
-            #BC if the player wins the battle, this dialogue will be used
-            m("Good thing this chemically modified goose didn’t bring any extremely toxic chemicals to this battle…")
-        else:
+        outcome = False
+        while outcome != True:
+            outcome = combatCycle(foe3)
             #BC if the player loses the battle, this dialogue will be used
             cmg("HONK!")
             m("I should have brought neutralizer. And maybe some PPE…")
+            m("Let's try this again...")
+        #BC if the player wins the battle, this dialogue will be used
+        m("Good thing this chemically modified goose didn’t bring any extremely toxic chemicals to this battle…")
+            
 
 
     n "Combat over." #BC let's the player know that the battle sequence has concluded 
@@ -355,20 +362,20 @@ label start:
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
-        outcome = combatCycle(boss)
-        if outcome:
-            #BC if the player wins the battle, this dialogue will be used
-            m("Your reign of chemical terror is over.")
-            m("The geese will no longer be chemically modified, and UW students will no longer be terrorized by those chemically modified geese.")
-            m("It’s time for you to move on from university…I mean it has been decades after all…")
-            e("I never thought that anyone would thwart my plans. But you may be right, it may be time for me to retire at the ripe ol’ age of 18.")
-            m("You’re not 18. You’ve been here since 1957.")
-            e("Right…")
-
-        else:
+        outcome = False
+        while outcome != True:
+            outcome = combatCycle(boss)
             #BC if the player loses the battle, this dialogue will be used
             e("You really thought some random first-year chemical engineering student could beat me? HA HA HA.")
-
+            m("Let's try this again...")
+        #BC if the player wins the battle, this dialogue will be used
+        m("Your reign of chemical terror is over.")
+        m("The geese will no longer be chemically modified, and UW students will no longer be terrorized by those chemically modified geese.")
+        m("It’s time for you to move on from university…I mean it has been decades after all…")
+        e("I never thought that anyone would thwart my plans. But you may be right, it may be time for me to retire at the ripe ol’ age of 18.")
+        m("You’re not 18. You’ve been here since 1957.")
+        e("Right…")
+            
     n "Combat over." #BC let's the player know that the battle sequence has concluded 
 
     #BC since the battle is over, the image of one of us can disappear
