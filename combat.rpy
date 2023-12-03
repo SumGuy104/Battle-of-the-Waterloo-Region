@@ -70,14 +70,13 @@ python early:
                     return ["Acid Breath",33,1]
                 else:
                     return ["Radiation",40,1]
-            elif self.nickname == olg:
-                if atkNum == 1
-                    return["Hop",1,1]
-            elif self.nickname == tlg
-                if atkNum == 1
+            elif self.nickname == 'olg':
+                return["Hop",1,1]
+            elif self.nickname == 'tlg':
+                if atkNum == 1:
                     dmg = random.randint(10,15)
                     return ["Triple Kick",dmg,3]
-                elif atkNum == 2
+                elif atkNum == 2:
                     return ["Shuffle Stomp",25,1]
                 else:
                     return ["Body Check",30,1]
@@ -155,7 +154,7 @@ python early:
                 n((player.name+" deals "+str(damage)+" damage" + (" again"*i) + "." ))
                 foe.takeDmg(damage) 
 
-            #WC: If the attack cooresponding to the choice contains recoil code in 'atkList', this code passes it a random number from 1 to 3
+            #WC: This code is for attacks in 'atkList' that have recoil code. It calls the attack from 'atkList' and gives a random # from 1-3 as an argument
             reco = random.randint(1,4)
             player.atkList(choice, reco) 
             
@@ -168,8 +167,17 @@ python early:
             rand = random.randint(1,3)
             damage = fighter.atkList(foe,rand)[1]
             n((foe.name+" uses "+fighter.atkList(foe,rand)[0]+ "."))
-            n((foe.name+" deals "+str(damage)+" damage."))
-            player.takeDmg(damage)
+
+            #WC: This multi-hit attack code works the same as above but for foes
+            damage = foe.atkList(choice)[1]
+            loop = foe.atkList(choice)[2]
+            for i in range(loop):
+                n((foe.name+" deals "+str(damage)+" damage" + (" again"*i) + "." ))
+                player.takeDmg(damage) 
+
+            #WC: This recoil attack code works the same as above but for foes
+            reco = random.randint(1,4)
+            foe.atkList(choice, reco) 
 
             #WC: If the player has been redused to  of 0 health or lower, the playerAlive is set to false and the combat loop is broken, otherwise the players current health is printed
             if player.health <= 0:
