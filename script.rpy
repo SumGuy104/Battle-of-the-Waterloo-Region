@@ -6,6 +6,7 @@ define a = Character("Andrew", color="#d62811")
 define b = Character("Ben", color="#115dd6")
 define olg = Character ("One-legged Goose")
 define cmg = Character ("Chemically-mutated Goose")
+define tlg = character ('Three-Legged Goose')
 define n = Character("",what_color="#03fcc6")
 
 python early:
@@ -14,7 +15,8 @@ python early:
     bpHolder = fighter('Ben','b',100)
 
     foe1 = fighter("One-legged Goose",'olg', 75)
-    foe2 = fighter('Chemically-mutated Goose','cmg', 100)
+    foe2 = fighter('Three-Legged Goose','tlg',100)
+    foe3 = fighter('Chemically-mutated Goose','cmg', 100)
 
 
 $ uChoice = 1
@@ -109,7 +111,7 @@ label start:
         
 
 
-    $foe2 = fighter('Chemically-mutated Goose','cmg', 100)
+    #$foe2 = fighter('Chemically-mutated Goose','cmg', 100)
     
 
 
@@ -140,7 +142,7 @@ label start:
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
-        outcome = combatCycle(foe2)
+        outcome = combatCycle(foe1)
         if outcome:
             #BC if the player wins the battle, this dialogue will be used
             m("The first battle victory of many more to come! Even if it was just against a one-legged goose…")
@@ -232,7 +234,7 @@ label start:
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
-        outcome = combatCycle(foe2)
+        outcome = combatCycle(foe3)
         if outcome:
             #BC if the player wins the battle, this dialogue will be used
             m("Good thing this chemically modified goose didn’t bring any extremely toxic chemicals to this battle…")

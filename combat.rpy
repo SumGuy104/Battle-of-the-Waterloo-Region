@@ -24,23 +24,23 @@ python early:
         and return that variable in the second element in the list (just like ive done with the dmg variable on the first 2 attacks)
         '''
         
-
+        #AR,WC - This is the move table for all characters in the game
         def atkList(self,atkNum, recoil=0):
-            if self.nickname == 'w':
-                if atkNum == 1:
-                    dmg = random.randint(15,50)
-                    return ["Killer Groove",dmg,1]
+            if self.nickname == 'w': #WC - nickname check allows for each character the ability to only choose between the 3 moves assigned to them
+                if atkNum == 1: #WC - Move check to see which move was input 
+                    dmg = random.randint(15,50) #AR, WC - a dmg variable is set to a randomized number that is then called upon for the damage value of the move
+                    return ["Killer Groove",dmg,1]#WC - order of list, name of move, damgage, number of times the move hits
                 elif atkNum == 2:
-                    hitnumber = random.randint(1,5)
+                    hitnumber = random.randint(1,5)#AR, WC - The variable hitnumber is assigned to a random value between 1-5 and then called upon in the return statement
                     dmg = random.randint(10,15)
-                    return ["Drum Beating",dmg,hitnumber]
+                    return ["Drum Beating",dmg,hitnumber]#AR, WC - the randomzied hitnumber will now take effect in the amount of times the move is used
                 else:
                     return ["AbMaj7(b9,#13)",32,1]
             elif self.nickname == 'a':
                 if atkNum == 1:
-                    chance = random.randint(1,1000)
+                    chance = random.randint(1,1000)#AR, WC - chance is randomized and then sent through a if statement check
                     dmg = 0
-                    if chance <= 272:   
+                    if chance <= 272: #AR, WC - if the check succeeds the attack will deal 6022 damage if not it will deal 0 damage
                         dmg = 6022
                     return ["Euler's Punch",dmg,1]
                     
@@ -51,11 +51,11 @@ python early:
                     return ["Span(B)",dmg,1]
             elif self.nickname == 'b':
                 if atkNum == 1:
-                    if recoil == 3:
+                    if recoil == 3: #AR, WC - the value of recoil is a parameter that is randomized between 1-3
                         n("The blue cheese was actually just moldy cheddar")
                         n("Ben takes 25 damage")
 
-                    return ["Blue Cheese",45,1]
+                    return ["Blue Cheese",45,1]#AR, WC - if the recoil check is true the move will be altered to deal damge to ones self as well as the regular damage
                 elif atkNum == 2:
                     hitnumb = random.randint(1,2)
                     dmg = random.randint(20,30)
@@ -65,11 +65,22 @@ python early:
                     return ["Brie Bomb",dmg,1]
             elif self.nickname == 'cmg':
                 if atkNum == 1:
-                    return ["Sonic Honk",2,1]
+                    return ["Sonic Honk",25,1]
                 elif atkNum == 2:
-                    return ["Acid Breath",22,1]
+                    return ["Acid Breath",33,1]
                 else:
-                    return ["Triple Kick",222,1]
+                    return ["Radiation",40,1]
+            elif self.nickname == olg:
+                if atkNum == 1
+                    return["Hop",1,1]
+            elif self.nickname == tlg
+                if atkNum == 1
+                    dmg = random.randint(10,15)
+                    return ["Triple Kick",dmg,3]
+                elif atkNum == 2
+                    return ["Shuffle Stomp",25,1]
+                else:
+                    return ["Body Check",30,1]
         
         #This is an old system of dealing with attacks and damage. Its simpler but much longer (and you know Im down-bad for efficiency)
         def atk(self,atkNum):
