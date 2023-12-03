@@ -6,7 +6,7 @@ define a = Character("Andrew", color="#d62811")
 define b = Character("Ben", color="#115dd6")
 define olg = Character ("One-legged Goose")
 define cmg = Character ("Chemically-mutated Goose")
-define tlg = character ('Three-Legged Goose')
+define tlg = Character ('Three-Legged Goose')
 define n = Character("",what_color="#03fcc6")
 
 python early:
@@ -128,7 +128,20 @@ label start:
 
     n"A goose…but with only one leg."
 
-    show ptyler1 #BC the image of the One-legged goose appears
+    image OneleggedGoose:
+        "OneLeggedGoose1.png"
+        pause 0.1
+        "OneLeggedGoose2.png"
+        pause 0.1
+        "OneLeggedGoose3.png"
+        pause 0.1
+        "OneLeggedGoose4.png"
+        pause 0.1
+        "OneLeggedGoose5.png"
+        pause 0.2
+        repeat
+
+    show OneleggedGoose #BC the image of the One-legged goose appears
 
     n"The one-legged goose looks at you, as if it knows you are on the opposing side of the battle."
 
@@ -152,7 +165,7 @@ label start:
 
     n"Combat over." #BC let's the player know that the battle sequence has concluded 
 
-    hide ptyler1 #BC since the battle is over, the image of the goose can disappear
+    hide OneleggedGoose #BC since the battle is over, the image of the goose can disappear
 
 
     #BC This will be the text before the fight with the Three-legged day
@@ -180,7 +193,28 @@ label start:
 
     n"Why does this one have three legs?!"
 
-    show ptyler1 #BC the image of the Three-legged goose appears
+    image ThreeLeggedGoose:
+        'ThreeLeggedGoose1.png'
+        pause 0.1
+        'ThreeLeggedGoose2.png'
+        pause 0.1
+        'ThreeLeggedGoose3.png'
+        pause 0.1
+        'ThreeLeggedGoose4.png'
+        pause 0.1
+        'ThreeLeggedGoose5.png'
+        pause 0.1
+        'ThreeLeggedGoose6.png'
+        pause 0.1
+        'ThreeLeggedGoose7.png'
+        pause 0.1
+        'ThreeLeggedGoose8.png'
+        pause 0.1
+        'ThreeLeggedGoose9.png'
+        pause 0.1
+        repeat
+
+    show ThreeLeggedGoose #BC the image of the Three-legged goose appears
 
     n"You conclude that it is probably just a one in a million genetic mutation."
 
@@ -202,7 +236,7 @@ label start:
 
     n"Combat over." #BC let's the player know that the battle sequence has concluded 
 
-    hide ptyler1 #BC since the battle is over, the image of the goose can disappear
+    hide ThreeLeggedGoose #BC since the battle is over, the image of the goose can disappear
 
 
     #BC This will be the text before the fight with the Chemically-mutated Goose
@@ -222,7 +256,20 @@ label start:
 
     n"You slowly approach the box, when suddenly, a goose springs out of the box, but it’s no normal goose."
 
-    show ptyler1 #BC the image of the Chemically-mutated Goose appears
+    image ChemicallyMutatedGoose:
+        'ChemicallyMutatedGoose1.png'
+        pause 0.1
+        'ChemicallyMutatedGoose1.png'
+        pause 0.1
+        'ChemicallyMutatedGoose3.png'
+        pause 0.1
+        'ChemicallyMutatedGoose4.png'
+        pause 0.1
+        'ChemicallyMutatedGoose5.png'
+        pause 0.4
+        repeat
+
+    show ChemicallyMutatedGoose #BC the image of the Chemically-mutated Goose appears
 
     n"This goose has mutated and looks like it has been chemically modified!"
 
@@ -246,7 +293,7 @@ label start:
 
     n "Combat over." #BC let's the player know that the battle sequence has concluded 
 
-    hide ptyler1 #BC since the battle is over, the image of the goose can disappear
+    hide ChemicallyMutatedGoose #BC since the battle is over, the image of the goose can disappear
 
 
     #BC This will be the text before the fight with One of us
