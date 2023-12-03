@@ -127,40 +127,57 @@ python early:
             return 222
 
     def combatCycle(foe):
-        n((player.name + " verses the " + foe.name + "."))
-        foe.heal()
+        '''
+        WC: This is the main cycle for all combat encouters
+        It takes the object of the enemy as the argument
+        The player chooses an attack, their fighter deals the damange from that attack to the foe
+        The foe randomly picks and attack and deals the damage form that attack to the player's fighter
+        The function returns true if the player won and false if they lost
+        '''
+        n((player.name + " verses the " + foe.name + ".")) #WC: Introduces the combat encounter
+
+        #WC: Sets all fighters health to full before the attack
+        foe.heal() 
         player.heal()
+
+        #WC: The combat loops until the loop is broken (when a fighter dies)
         playerAlive = True
         while True:
+            #WC: Uses the renpy menu function to prompt the user to choose an attack and saves the attack number in the 'choice' variable
             n("Choose an attack:")
             choice = renpy.display_menu([ (player.atkList(1)[0],1),(player.atkList(2)[0],2),(player.atkList(3)[0],3) ])
             n((player.name+ " uses " + player.atkList(choice)[0] + "."))
 
+            #WC: For attacks that have the possiblility of hitting multiple times (fighter.atklist()[2] > 1) then a for loop is used to deal damage
             damage = player.atkList(choice)[1]
             loop = player.atkList(choice)[2]
             for i in range(loop):
                 n((player.name+" deals "+str(damage)+" damage" + (" again"*i) + "." ))
-                foe.takeDmg(damage)
+                foe.takeDmg(damage) 
 
+            #WC: If the attack cooresponding to the choice contains recoil code in 'atkList', this code passes it a random number from 1 to 3
             reco = random.randint(1,4)
-            player.atkList(choice, reco)
+            player.atkList(choice, reco) 
             
+            #WC: If the foe has been reduced to 0 or healther or lower, the combat loop is broken out of, otherwise the foes current health is printed
             if foe.health <= 0:
                 break
             n((foe.name+" is at "+str(foe.health)+" health."))
              
+            #WC: A random attack number is generated from 1 to 3 and the cooresponding attack in the atkList is called and the damage is dealt to the player
             rand = random.randint(1,3)
             damage = fighter.atkList(foe,rand)[1]
             n((foe.name+" uses "+fighter.atkList(foe,rand)[0]+ "."))
             n((foe.name+" deals "+str(damage)+" damage."))
             player.takeDmg(damage)
+
+            #WC: If the player has been redused to  of 0 health or lower, the playerAlive is set to false and the combat loop is broken, otherwise the players current health is printed
             if player.health <= 0:
                 playerAlive = False
-                break
-                
+                break   
             n((player.name+" is at "+str(player.health)+" health."))
         
-        return playerAlive
+        return playerAlive #WC: Returns true if they player is still alive after the combat
         
 
 
