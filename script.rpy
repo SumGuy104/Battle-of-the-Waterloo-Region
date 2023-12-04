@@ -4,21 +4,23 @@
 define w = Character("Will", color="#43e312")
 define a = Character("Andrew", color="#d62811")
 define b = Character("Ben", color="#115dd6")
-define olg = Character ("One-legged Goose")
-define cmg = Character ("Chemically-mutated Goose")
-define tlg = Character ('Three-Legged Goose')
+
+define olgChar = Character ("One-legged Goose")
+define cmgChar = Character ("Chemically-mutated Goose")
+define tlgChar = Character ('Three-Legged Goose')
+
 define n = Character("",what_color="#03fcc6")
 
 python early:
-    wpHolder = fighter('Will','w', 100)
-    apHolder = fighter('Andrew','a',100)
-    bpHolder = fighter('Ben','b',100)
+    wFighter = fighter('Will','w', 100)
+    aFighter = fighter('Andrew','a',100)
+    bFighter = fighter('Ben','b',100)
 
-    foe1 = fighter("One-legged Goose",'olg', 75)
-    foe2 = fighter('Three-Legged Goose','tlg',100)
-    foe3 = fighter('Chemically-mutated Goose','cmg', 100)
+    olgFighter = fighter("One-legged Goose",'olg', 75)
+    tlgFighter = fighter('Three-Legged Goose','tlg',100)
+    cmgFighter = fighter('Chemically-mutated Goose','cmg', 100)
 
-
+'''
 $ uChoice = 1
 
 if uChoice == 1:
@@ -31,6 +33,7 @@ elif uChoice == 2:
 else:
     define m = Character("Ben", color="#115dd6")
     $ p = b
+'''
 
 
 
@@ -86,24 +89,25 @@ label start:
 
     n "Choose your character." #BC prompts the user to pick a character
     
+    #WC player is prompted to choose a character. Depending on their choice, the main character and the final boss will be determined accordingly
     $charChoice = renpy.display_menu([ ('Will',1),('Andrew',2),('Ben',3) ])
     if charChoice == 1:
-        $player = wpHolder
-        $boss = apHolder
-        $m = w
+        $player = wFighter
+        $boss = aFighter
+        $m = w 
         $e = a
         n"An excellent decision." #BC if the user chooses Will, this text will pop up
         m"With the power of music, those geese won’t know what’s coming for them." #BC if the user chooses Will, this dialogue will pop up
     elif charChoice == 2:
-        $player = apHolder
-        $boss = bpHolder
+        $player = aFighter
+        $boss = bFighter
         $m = a
         $e = b
         n"An excellent decision." #BC if the user chooses Andrew, this text will pop up
         m"With the power of engineering, those geese won’t know what’s coming for them." #BC if the user chooses Andrew, this dialogue will pop up
     else:
-        $player = bpHolder
-        $boss = wpHolder
+        $player = bFighter
+        $boss = wFighter
         $m = b
         $e = w
         n"An excellent decision." #BC if the user chooses Ben, this text will pop up
@@ -155,13 +159,10 @@ label start:
     python:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
-        outcome = False
-        while outcome != True:
-            if not outcome:
-            outcome = combatCycle(foe1)
-                #BC if the player loses the battle, this dialogue will be used
-                m("Well, it could be worse. I could have lost against a zero-legged goose…")
-                m("Let's try this again...")
+        while not combatCycle(olgFighter):             
+            #BC if the player loses the battle, this dialogue will be used
+            m("Well, it could be worse. I could have lost against a zero-legged goose…")
+            m("Let's try this again...")
         
         #BC if the player wins the battle, this dialogue will be used
         m("The first battle victory of many more to come! Even if it was just against a one-legged goose…")
@@ -232,12 +233,10 @@ label start:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
         outcome = False
-        while outcome != True:
-            outcome = combatCycle(foe2)
-            if not outcome:
-                #BC if the player loses the battle, this dialogue will be used
-                m("A normal goose is bad enough, but one with three legs…come on…")
-                m("Let's try this again...")
+        while not combatCycle(tlgFighter):
+            #BC if the player loses the battle, this dialogue will be used
+            m("A normal goose is bad enough, but one with three legs…come on…")
+            m("Let's try this again...")
                 
         #BC if the player wins the battle, this dialogue will be used
         m("No one attacks a UW student unwarranted even if it is a three-legged goose! BUT WHY DOES IT HAVE THREE LEGS?")
@@ -287,16 +286,12 @@ label start:
 
     #The battle begins
     python:
-        #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
-        
-        outcome = False
-        while outcome != True:
-            outcome = combatCycle(foe3)
-            if not outcome:
-                #BC if the player loses the battle, this dialogue will be used
-                cmg("HONK!")
-                m("I should have brought neutralizer. And maybe some PPE…")
-                m("Let's try this again...")
+        #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False) 
+        while not combatCycle(cmgFighter):
+            #BC if the player loses the battle, this dialogue will be used
+            cmgChar("HONK!")
+            m("I should have brought neutralizer. And maybe some PPE…")
+            m("Let's try this again...")
 
         #BC if the player wins the battle, this dialogue will be used
         m("Good thing this chemically modified goose didn’t bring any extremely toxic chemicals to this battle…")
@@ -368,12 +363,10 @@ label start:
         #When a fighter dies, it restarts the combat cycle if the player is the one that died (akd if combatCycle == False)
         
         outcome = False
-        while outcome != True:
-            outcome = combatCycle(boss)
+        while not combatCycle(boss):
             #BC if the player loses the battle, this dialogue will be used
-            if not outcome:
-                e("You really thought some random first-year chemical engineering student could beat me? HA HA HA.")
-                m("Let's try this again...")
+            e("You really thought some random first-year chemical engineering student could beat me? HA HA HA.")
+            m("Let's try this again...")
 
         #BC if the player wins the battle, this dialogue will be used
         m("Your reign of chemical terror is over.")

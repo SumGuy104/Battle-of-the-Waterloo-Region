@@ -80,7 +80,8 @@ python early:
                     return ["Shuffle Stomp",25,1]
                 else:
                     return ["Body Check",30,1]
-        
+
+    '''
         #This is an old system of dealing with attacks and damage. Its simpler but much longer (and you know Im down-bad for efficiency)
         def atk(self,atkNum):
             if self.nickname == 'w':
@@ -124,6 +125,8 @@ python early:
             return 22
         else:   #Tripple Kick
             return 222
+
+    '''
 
     def combatCycle(foe):
         '''
@@ -169,15 +172,15 @@ python early:
             n((foe.name+" uses "+fighter.atkList(foe,rand)[0]+ "."))
 
             #WC: This multi-hit attack code works the same as above but for foes
-            damage = foe.atkList(choice)[1]
-            loop = foe.atkList(choice)[2]
+            damage = foe.atkList(rand)[1]
+            loop = foe.atkList(rand)[2]
             for i in range(loop):
                 n((foe.name+" deals "+str(damage)+" damage" + (" again"*i) + "." ))
                 player.takeDmg(damage) 
 
             #WC: This recoil attack code works the same as above but for foes
             reco = random.randint(1,4)
-            foe.atkList(choice, reco) 
+            foe.atkList(random, reco) 
 
             #WC: If the player has been redused to  of 0 health or lower, the playerAlive is set to false and the combat loop is broken, otherwise the players current health is printed
             if player.health <= 0:
