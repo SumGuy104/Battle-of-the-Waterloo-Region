@@ -157,6 +157,7 @@ label start:
         
         outcome = False
         while outcome != True:
+            if not outcome:
             outcome = combatCycle(foe1)
             #BC if the player loses the battle, this dialogue will be used
             m("Well, it could be worse. I could have lost against a zero-legged goose…")
