@@ -54,6 +54,7 @@ python early:
                     if recoil == 3: #AR, WC - the value of recoil is a parameter that is randomized between 1-3
                         n("The blue cheese was actually just moldy cheddar")
                         n("Ben takes 25 damage")
+                        self.takeDmg(25)
 
                     return ["Blue Cheese",45,1]#AR, WC - if the recoil check is true the move will be altered to deal damge to ones self as well as the regular damage
                 elif atkNum == 2:
