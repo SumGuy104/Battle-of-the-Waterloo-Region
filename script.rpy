@@ -132,8 +132,8 @@ label start:
 
     n"A goose…but with only one leg."
 
-    image OneleggedGoose:
-        "OneLeggedGoose1.png"
+    image OneleggedGoose:#AR - When called upon the following function will instead be called upon
+        "OneLeggedGoose1.png"#each image is called upon with a pause between creating a gif within renpy
         pause 0.1
         "OneLeggedGoose2.png"
         pause 0.1
