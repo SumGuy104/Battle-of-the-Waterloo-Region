@@ -162,12 +162,12 @@ python early:
             reco = random.randint(1,4)
             player.atkList(choice, reco) 
             
-            #WC: If the foe has been reduced to 0 or healther or lower, the combat loop is broken out of, otherwise the foes current health is printed
+            #WC: If foe dies, exit combat, otherwise print foe health
             if foe.health <= 0:
                 break
             n((foe.name+" is at "+str(foe.health)+" health."))
              
-            #WC: A random attack number is generated from 1 to 3 and the cooresponding attack in the atkList is called and the damage is dealt to the player
+            #WC: Foe uses random attack, damage is dealt to player
             rand = random.randint(1,3)
             damage = fighter.atkList(foe,rand)[1]
             n((foe.name+" uses "+fighter.atkList(foe,rand)[0]+ "."))
